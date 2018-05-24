@@ -1,0 +1,228 @@
+17/25
+library(aenetgt)
+ls
+aenet
+model1(100)
+data <- model1(100)
+X <- data$X
+Y.true <- data$Yi
+Se <- .95
+Sp <- .97
+individual.assay.gen(Y.true,Se,Sp,cj=1)
+individual.assay.gen(Y.true,Se,Sp,cj=1)
+assay.data <- dorfman.assay.gen(Y.true,Se,Sp,cj)
+Se <- c(.95,.92)
+Sp <- c(.97,.98)
+cj <- 4
+assay.data <- dorfman.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+b <- data$b
+EY.exact(Z,Y,X,b,Se,Sp)
+EY <- EY.approx(Z,Y,X,b,Se,Sp,GI=5000)
+EY
+b.mle <- mlegt(X, Y, Z, Se, Sp,EY.approx=TRUE)
+b.mle <- mlegt(X, Y, Z, Se, Sp, E.approx=TRUE)
+N <- 100
+data <- model0(N)
+X <- data$X
+Y.true <- data$Yi
+Se <- c(.95,.92) # set master pool and individual assay sensitivity
+Sp <- c(.97,.98) # set master pool and individual assay specificity
+cj <- 4 # set size of master pools
+assay.data <- dorfman.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+b.mle <- mlegt(X, Y, Z, Se, Sp, delta = .01)
+EY <- EY.exact(Z,Y,X,b,Se,Sp)
+EY <- EY.exact(Z,Y,X,b.mle,Se,Sp)
+b.mle <- mlegt(X, Y, Z, Se, Sp, delta = .01)$b
+EY <- EY.exact(Z,Y,X,b.mle,Se,Sp)
+Z
+Y
+X
+b.mle
+mlegt(X, Y, Z, Se, Sp, delta = .01)
+b.mle <- mlegt(X, Y, Z, Se, Sp, delta = .01)$b.mle
+EY <- EY.exact(Z,Y,X,b.mle,Se,Sp)
+px <- as.numeric(logit(b.mle,X))
+CovYiYj <- CovYiYj.approx(Z,Y,X,b.mle,Se,Sp,EY)
+Hess <- t(X) %*% ( - diag(px * (1 - px))  +  CovYiYj  ) %*% X
+b.cov.est <-  solve( - Hess )
+b.mle.se <- sqrt(diag(b.cov.est)) # estimated standard errors of mles
+b.mle.se
+N <- 500
+data <- model0(N)
+X <- data$X
+Y.true <- data$Yi
+Se <- c(.95,.92) # set master pool and individual assay sensitivity
+Sp <- c(.97,.98) # set master pool and individual assay specificity
+cj <- 4 # set size of master pools
+assay.data <- dorfman.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+b.mle <- mlegt(X, Y, Z, Se, Sp, delta = .01)$b.mle
+EY <- EY.exact(Z,Y,X,b.mle,Se,Sp)
+px <- as.numeric(logit(b.mle,X))
+CovYiYj <- CovYiYj.approx(Z,Y,X,b.mle,Se,Sp,EY)
+N <- 200
+data <- model0(N)
+X <- data$X
+Y.true <- data$Yi
+assay.data <- dorfman.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+b.mle <- mlegt(X, Y, Z, Se, Sp, delta = .01)$b.mle
+EY <- EY.exact(Z,Y,X,b.mle,Se,Sp)
+px <- as.numeric(logit(b.mle,X))
+CovYiYj <- CovYiYj.approx(Z,Y,X,b.mle,Se,Sp,EY)
+Hess <- t(X) %*% ( - diag(px * (1 - px))  +  CovYiYj  ) %*% X
+b.cov.est <-  solve( - Hess )
+b.mle.se <- sqrt(diag(b.cov.est)) # estimated standard errors of mles
+N <- 200
+data <- model0(N)
+X <- data$X
+Se <- c(.95,.92) # set master pool and individual assay sensitivity
+Sp <- c(.97,.98) # set master pool and individual assay specificity
+cj <- 4 # set size of master pools
+assay.data <- dorfman.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+mlegt.out <- mlegt(X, Y, Z, Se, Sp, delta = .01) # compute mle
+N <- 200
+data <- model0(N)
+X <- data$X
+Y.true <- data$Yi
+Se <- c(.95) # set individual assay sensitivity
+Sp <- c(.97) # set individual assay specificity
+cj <- 1 # set size of master pools
+assay.data <- individual.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=1, theta=.2, weights = 1, delta = .01) # compute mle
+enetgt.out
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=10, theta=.2, weights = 1, delta = .01) # compute mle
+enetgt.out
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=100, theta=.2, weights = 1, delta = .01) # compute mle
+enetgt.out
+N <- 200
+data <- model1(N)
+X <- data$X
+Y.true <- data$Yi
+assay.data <- individual.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=100, theta=.2, weights = 1, delta = .01) # compute mle
+enetgt.out
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=10, theta=.2, weights = 1, delta = .01) # compute mle
+enetgt.out
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=10, theta=.5, weights = 1, delta = .01) # compute mle
+enetgt.out
+enetgt.out$b.enet
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=10, theta=.5, weights = 1/abs(enetgt.out$b.enet[-1]), delta = .01)
+enetgt.out
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=1, theta=.5, weights = 1/abs(enetgt.out$b.enet[-1]), delta = .01)
+enetgt.out
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=.5, theta=.5, weights = 1/abs(enetgt.out$b.enet[-1]), delta = .01)
+enetgt.out
+enetgt.out$b.enet[-1])
+1/abs(enetgt.out$b.enet[-1])
+enetgt.out
+enetgt.out$b.enet[-1]
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=10, theta=.5, weights = 1, delta = .01)
+enetgt.out
+enetgt(X, Y, Z, Se, Sp, lambda=.5, theta=.5, weights = 1/abs(enetgt.out$b.enet[-1]), delta = .01)
+a.enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=.5, theta=.5, weights = 1/abs(enetgt.out$b.enet[-1]), delta = .01)
+a.enetgt.out
+enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=10, theta=.5, weights = 1)
+a.enetgt.out <- enetgt(X, Y, Z, Se, Sp, lambda=.5, theta=.5, weights = 1/abs(enetgt.out$b.enet[-1]))
+a.enetgt.out
+n.lambda <- 25
+n.theta <- 3
+enetgt.out <- enetgt.grid(X, Y, Z, Se, Sp, n.lambda, n.theta, weights = 1)
+n.lambda <- 25
+n.theta <- 2
+enetgt.out <- enetgt.grid(X, Y, Z, Se, Sp, n.lambda, n.theta, weights = 1)
+n.lambda <- 10
+n.theta <- 2
+enetgt.out <- enetgt.grid(X, Y, Z, Se, Sp, n.lambda, n.theta, weights = 1)
+enetgt.grid.out <- enetgt.grid(X, Y, Z, Se, Sp, n.lambda, n.theta, weights = 1)
+enetgt.grid.out
+N <- 200
+data <- model1(N)
+X <- data$X
+Y.true <- data$Yi
+Se <- c(.95) # set individual assay sensitivity
+Sp <- c(.97) # set individual assay specificity
+cj <- 1 # set size of master pools
+assay.data <- individual.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+n.lambda <- 10
+n.theta <- 2
+enetgt.grid.out <- enetgt.grid( X, Y, Z, Se, Sp, n.lambda, n.theta, weights = 1, delta = delta, E.approx,get.SEs=FALSE,ridge.include=FALSE)
+enetgt.grid.out <- enetgt.grid( X, Y, Z, Se, Sp, n.lambda, n.theta)
+cv.fold.data <- get.cv.individual.fold.data(X,Y,Z,K)
+get.individual.cv.fold.data(X,Y,Z,K)
+cv.fold.data <- get.individual.cv.fold.data(X,Y,Z,K=5)
+cv.fold.data
+N <- 200
+data <- model1(N)
+X <- data$X
+Y.true <- data$Yi
+Se <- c(.95) # set master pool assay sensitivity
+Sp <- c(.97) # set master pool assay specificity
+cj <- 4 # set size of master pools
+assay.data <- masterpool.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+n.lambda <- 10
+n.theta <- 2
+enetgt.grid.out <- enetgt.grid( X, Y, Z, Se, Sp, n.lambda, n.theta)
+individual.cv.fold.data <- get.individual.cv.fold.data(X,Y,Z,K=5)
+masterpool.cv.fold.data <- get.masterpool.cv.fold.data(X,Y,Z,K=5)
+masterpool.cv.fold.data
+N <- 200
+data <- model1(N)
+X <- data$X
+Y.true <- data$Yi
+Se <- c(.92,.95) # set master pool and individual assay sensitivity
+Sp <- c(.97,.98) # set master pool and individual assay specificity
+cj <- 4 # set size of master pools
+assay.data <- dorfman.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+dorfman.cv.fold.data <- get.dorfman.cv.fold.data(X,Y,Z,K=5)
+dorfman.cv.fold.data
+N <- 200
+data <- model1(N)
+X <- data$X
+Y.true <- data$Yi
+Se <- c(.92,.95) # set row/col and individual assay sensitivity
+Sp <- c(.97,.98) # set row/col and individual assay specificity
+cj <- 4 # set size of master pools
+assay.data <- array.assay.gen(Y.true,Se,Sp,cj)
+Z <- assay.data$Z
+Y <- assay.data$Y
+array.cv.fold.data <- get.array.cv.fold.data(X,Y,Z,K=5)
+data <- model0(300)
+X <- data$X
+Y.true <- data$Y
+Se <- c(.94) # individual testing sensitivities
+Sp <- c(.95) # individual testing specificities
+assay.data <- individual.assay.gen(Y.true,Se,Sp,cj=1)
+Z <- assay.data$Z
+Y <- assay.data$Y
+mlegt.out <- mlegt(X,Y,Z,Se,Sp,delta=.01)
+b.mle <- mlegt.out$b.mle
+b.mle <- mlegt.out$b.mle
+n.lambda <- 8
+n.theta <- 2
+enetgt.grid.out <- enetgt.grid(X,Y,Z,Se,Sp,n.lambda,n.theta,weights = 1/abs(b.mle[-1]),delta=.01)
+aic.bic.eric.enetgt.grid.out <- aic.bic.eric.enetgt.grid(enetgt.grid.out,Z,X,Se,Sp,"individual")
+cv.fold.data <- get.individual.cv.fold.data(X,Y,Z,K=3)
+cv.enetgt.grid.out <- cv.enetgt.grid(cv.fold.data,"individual",Se,Sp,enetgt.grid.out$lambda.seq,
+enetgt.grid.out$theta.seq,weights=1/abs(b.mle[-1]),
+B.INIT=enetgt.grid.out$B.ENET,delta=.01)
+b.aenet.cv <- enetgt.grid.out$B.ENET[cv.enetgt.grid.out$cv.ind[1],,cv.enetgt.grid.out$cv.ind[2]]#
+b.aenet.cv

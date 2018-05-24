@@ -1,0 +1,26 @@
+useDynLib(aenetgt)
+importFrom(Rcpp,evalCpp)
+importFrom("stats", "rbinom", "rnorm", "sd")
+importFrom("graphics", "abline", "lines", "points")
+
+export(individual.assay.gen,
+	masterpool.assay.gen,
+	dorfman.assay.gen,
+	array.assay.gen,
+	EY.exact,
+	EY.approx,
+	CovYiYj.approx,
+	mlegt,
+	enetgt,
+	enetgt.grid,
+	get.individual.cv.fold.data,
+	get.masterpool.cv.fold.data,
+	get.dorfman.cv.fold.data,
+	get.array.cv.fold.data,
+	cv.enetgt.grid,
+	aic.bic.eric.enetgt.grid,
+	logit,
+	model0,
+	model1,
+	model2,
+	model3)
