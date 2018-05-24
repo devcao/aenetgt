@@ -5,4 +5,5 @@ This is an R package for computing the adaptive elastic net estimator on group t
 Install with the R commands:
 
 install.packages("devtools")
+
 devtools::install_github("gregorkb/aenetgt")
