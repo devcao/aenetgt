@@ -13,7 +13,7 @@ The DESCRIPTION file:
 \packageDESCRIPTION{aenetgt}
 \packageIndices{aenetgt}
 
-This package contains functions required to compute the adaptive elastic net logistic regression estimator on group testing data as described in Gregory, Wang, and McMahan (2018+).  The principal functions are \code{enetgt}, which computes the elastic net estimator with a weighted l1 norm, and \code{mlegt}, which computes the maximum likelihood estimator.  Computing the adaptive elastic net estimator requires obtaining an initial estimate, either from \code{enetgt} or \code{mlegt}, and using the initial estimator to specify the weights in a second fitting with the \code{enetgt} function. The \code{enetgt.grid} function fits the elastic net estimator with weighted l1 norm over a grid of tuning parameter values.  The \code{aic.bic.eric.enetgt.grid} function takes the output of the \code{enetgt.grid} function and chooses tuning parameter values according to the AIC, BIC, and ERIC criteria.  The functions \code{get.individual.cv.fold.data}, \code{get.masterpool.cv.fold.data}, \code{get.dorfman.cv.fold.data}, and \code{get.assay.cv.fold.data} split group testing data into crossvalidation training and testing folds.  The function \code{cv.enetgt.grid} takes the crossvalidation data folds returned by any of these four functions as well as output from \code{enetgt.grid} and chooses the tuning parameter values according to a likelihood-based crossvalidation procedure. The functions \code{individual.assay.gen}, \code{masterpool.assay.gen}, \code{dorfman.assay.gen}, and \code{array.assay.gen} are provided for generating group testing data under individual testing, master pool testing, Dorfman testing, and array testing, respectively.
+This package contains functions required to compute the adaptive elastic net logistic regression estimator on group testing data as described in Gregory, Wang, and McMahan (2018).  The principal functions are \code{enetgt}, which computes the elastic net estimator with a weighted l1 norm, and \code{mlegt}, which computes the maximum likelihood estimator.  Computing the adaptive elastic net estimator requires obtaining an initial estimate, either from \code{enetgt} or \code{mlegt}, and using the initial estimator to specify the weights in a second fitting with the \code{enetgt} function. The \code{enetgt.grid} function fits the elastic net estimator with weighted l1 norm over a grid of tuning parameter values.  The \code{aic.bic.eric.enetgt.grid} function takes the output of the \code{enetgt.grid} function and chooses tuning parameter values according to the AIC, BIC, and ERIC criteria.  The functions \code{get.individual.cv.fold.data}, \code{get.masterpool.cv.fold.data}, \code{get.dorfman.cv.fold.data}, and \code{get.assay.cv.fold.data} split group testing data into crossvalidation training and testing folds.  The function \code{cv.enetgt.grid} takes the crossvalidation data folds returned by any of these four functions as well as output from \code{enetgt.grid} and chooses the tuning parameter values according to a likelihood-based crossvalidation procedure. The functions \code{individual.assay.gen}, \code{masterpool.assay.gen}, \code{dorfman.assay.gen}, and \code{array.assay.gen} are provided for generating group testing data under individual testing, master pool testing, Dorfman testing, and array testing, respectively.
 
 }
 \author{
@@ -22,8 +22,9 @@ This package contains functions required to compute the adaptive elastic net log
 Maintainer: \packageMaintainer{aenetgt}
 }
 \references{
-	Gregory, K.B., Wang, D., McMahan, C.S. (2018+). Adaptive elastic net for group testing.
-
+	
+	 Gregory, K. B., Wang, D., & McMahan, C. S. (2018). Adaptive elastic net for group testing. \emph{Biometrics}.
+	 
 	Hui, F.K., Warton, D.I., & Foster, S.D. (2015). Tuning parameter selection for the adaptive lasso using ERIC. 
 		\emph{Journal of the Americal Statistical Association}, \emph{110}(509), 262-269.
 
