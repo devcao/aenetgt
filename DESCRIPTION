@@ -2,7 +2,7 @@ Package: aenetgt
 Type: Package
 Title: Adaptive Elastic Net for Group Testing Data
 Version: 1.0
-Date: 2018-05-02
+Date: 2019-12-02
 Author: Karl Gregory, Dewei Wang, and Chris McMahan
 Maintainer: Karl Gregory <gregorkb@stat.sc.edu>
 Description: Fits the adaptive elastic net logistic regression estimator for group testing data by using a penalized EM algorithm. The method is described in Gregory, K. B., Wang, D., & McMahan, C. S. (2019) <doi:10.1111/biom.12973>.
