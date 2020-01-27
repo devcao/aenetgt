@@ -23,4 +23,5 @@ export(individual.assay.gen,
 	model0,
 	model1,
 	model2,
-	model3)
+	model3,
+	pull.diagnoses)
