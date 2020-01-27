@@ -23,7 +23,7 @@ Splits Dorfman testing data into crossvalidation data sets.
 }
 \examples{
 # generate individual covariate values and disease statuses
-N <- 200
+N <- 160
 data <- model1(N)
 X <- data$X
 Y.true <- data$Yi

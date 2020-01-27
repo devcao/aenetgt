@@ -23,7 +23,7 @@ Maintainer: \packageMaintainer{aenetgt}
 }
 \references{
 	
-	 Gregory, K. B., Wang, D., & McMahan, C. S. (2018). Adaptive elastic net for group testing. \emph{Biometrics}.
+	 Gregory, K. B., Wang, D., & McMahan, C. S. (2019). Adaptive elastic net for group testing. \emph{Biometrics}.
 	 
 	Hui, F.K., Warton, D.I., & Foster, S.D. (2015). Tuning parameter selection for the adaptive lasso using ERIC. 
 		\emph{Journal of the Americal Statistical Association}, \emph{110}(509), 262-269.

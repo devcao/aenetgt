@@ -325,15 +325,15 @@ Z<-Z[1:J,]
 return(list("Z"=Z, "Y"=Y, "D"=D))
 }
 
-# #' Pulls individual diagnoses from group testing data if available
-# #'
-# #' @param \code{Z} output from one of the functions \code{individial.assay.gen()},\code{masterpool.assay.gen()},\code{dorfman.assay.gen()}, or \code{array.assay.gen()}.
-# #' @param \code{Y} output from one of the functions \code{individial.assay.gen()},\code{masterpool.assay.gen()},\code{dorfman.assay.gen()}, or \code{array.assay.gen()}.
-# #' @return a vector of 0s and 1s which are the individual diagnoses, NULL if \code{Z} and \code{Y} come from \code{masterpool.assay.gen()}.
-# #'
-# #' This function pulls the individual diagnoses from 
-# #' matrices Z and Y when individual diagnoses are available.
-# #' So for masterpool testing, NULL will be returned.
+#' Pulls individual diagnoses from group testing data if available
+#'
+#' @param \code{Z} output from one of the functions \code{individial.assay.gen()},\code{masterpool.assay.gen()},\code{dorfman.assay.gen()}, or \code{array.assay.gen()}.
+#' @param \code{Y} output from one of the functions \code{individial.assay.gen()},\code{masterpool.assay.gen()},\code{dorfman.assay.gen()}, or \code{array.assay.gen()}.
+#' @return a vector of 0s and 1s which are the individual diagnoses, NULL if \code{Z} and \code{Y} come from \code{masterpool.assay.gen()}.
+#'
+#' This function pulls the individual diagnoses from
+#' matrices Z and Y when individual diagnoses are available.
+#' So for masterpool testing, NULL will be returned.
 pull.diagnoses <- function(Z,Y)
 {
 	if( (sum(Z[,2] > 1) == nrow(Z)) & sum(Z[,1]==1) > 0  ) # check to see if masterpool testing has been done.
@@ -516,7 +516,7 @@ return(EY)
 #'
 #' @examples
 #' # generate individual covariate values and disease statuses
-#' N <- 200
+#' N <- 160
 #' data <- model0(N)
 #' X <- data$X
 #' Y.true <- data$Yi
@@ -601,7 +601,7 @@ CovYiYj.approx <- function (Z, Y, X, b, Se, Sp, EY, GI = 50000)
 #'
 #' @examples
 #' # generate individual covariate values and disease statuses
-#' N <- 200
+#' N <- 160
 #' data <- model0(N)
 #' X <- data$X
 #' Y.true <- data$Yi
@@ -699,7 +699,7 @@ mlegt <- function( X, Y, Z, Se, Sp, binit = 1, delta = 1e-3, E.approx = FALSE, g
 #'
 #' @examples
 #' # generate individual covariate values and disease statuses
-#' N <- 200
+#' N <- 160
 #' data <- model1(N)
 #' X <- data$X
 #' Y.true <- data$Yi
@@ -818,7 +818,7 @@ enetgt <- function( X, Y, Z, Se, Sp, lambda, theta, weights = 1, binit = 1, delt
 #'
 #' @examples
 #' # generate individual covariate values and disease statuses
-#' N <- 200
+#' N <- 160
 #' data <- model1(N)
 #' X <- data$X
 #' Y.true <- data$Yi
@@ -1062,7 +1062,7 @@ enetgt.grid.0 <- function( X, Y, Z, Se, Sp, lambda.seq, theta.seq, weights = 1, 
 #'
 #' @examples
 #' # generate individual covariate values and disease statuses
-#' N <- 200
+#' N <- 160
 #' data <- model1(N)
 #' X <- data$X
 #' Y.true <- data$Yi
@@ -1154,7 +1154,7 @@ get.individual.cv.fold.data <- function(X,Y,Z,K)
 #'
 #' @examples
 #' # generate individual covariate values and disease statuses
-#' N <- 200
+#' N <- 160
 #' data <- model1(N)
 #' X <- data$X
 #' Y.true <- data$Yi
@@ -1246,7 +1246,7 @@ get.masterpool.cv.fold.data <- function(X,Y,Z,K)
 #'
 #' @examples
 #' # generate individual covariate values and disease statuses
-#' N <- 200
+#' N <- 160
 #' data <- model1(N)
 #' X <- data$X
 #' Y.true <- data$Yi
@@ -1338,7 +1338,7 @@ get.dorfman.cv.fold.data <- function(X,Y,Z,K)
 #'
 #' @examples
 #' # generate individual covariate values and disease statuses
-#' N <- 200
+#' N <- 160
 #' data <- model1(N)
 #' X <- data$X
 #' Y.true <- data$Yi
@@ -1520,8 +1520,8 @@ get.dorfman.individual.cv.fold.data <- function(X.dorf,Y.dorf,Z.dorf,X.ind,Y.ind
 #' @return A list which includes the chosen values of the tuning parameters according to crossvalidation.
 #'
 #' @examples
-# generate covariate values and disease statuses for 300 individuals from model0:
-#' data <- model0(300)
+# generate covariate values and disease statuses for 200 individuals from model0:
+#' data <- model0(200)
 #' X <- data$X
 #' Y.true <- data$Y
 #' # subject individuals to individual testing
@@ -1658,8 +1658,8 @@ FALSE,verbose=FALSE,plot=FALSE)
 #' which is an object returned by \code{enetgt.grid()}.
 #'
 #' @examples
-# generate covariate values and disease statuses for 300 individuals from model0:
-#' data <- model0(300)
+# generate covariate values and disease statuses for 200 individuals from model0:
+#' data <- model0(200)
 #' X <- data$X
 #' Y.true <- data$Y
 #' # subject individuals to individual testing

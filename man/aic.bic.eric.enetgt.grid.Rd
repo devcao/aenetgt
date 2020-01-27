@@ -33,7 +33,7 @@ which is an object returned by \code{enetgt.grid()}.
 Chooses tuning parameters via AIC, BIC, and ERIC.
 }
 \examples{
-data <- model0(300)
+data <- model0(200)
 X <- data$X
 Y.true <- data$Y
 # subject individuals to individual testing

@@ -43,7 +43,7 @@ A list which includes the chosen values of the tuning parameters according to cr
 Peforms crossvalidation to select a combination of tuning parameters.
 }
 \examples{
-data <- model0(300)
+data <- model0(200)
 X <- data$X
 Y.true <- data$Y
 # subject individuals to individual testing

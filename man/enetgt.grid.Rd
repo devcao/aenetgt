@@ -51,7 +51,7 @@ Computes the elastic net estimators with weighted l1 norm on group testing data 
 }
 \examples{
 # generate individual covariate values and disease statuses
-N <- 200
+N <- 160
 data <- model1(N)
 X <- data$X
 Y.true <- data$Yi
