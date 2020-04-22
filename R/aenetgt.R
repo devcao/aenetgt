@@ -2175,3 +2175,12 @@ model3 <- function(n)
     return(output)
 	
 }
+
+
+
+logistic_enet = function(EY, X, lambda, weights, theta, b0, delta){
+  
+  return( logistic_enet(EY, X, lambda, weights, theta, b0, 
+                        delta) )
+  
+}
