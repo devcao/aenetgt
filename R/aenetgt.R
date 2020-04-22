@@ -2166,7 +2166,7 @@ model3 <- function(n)
 {
 
 	p <- 24
-    b <- c(-3, rep(c(0.5, 0, 0), 8))
+    b <- c(-3, rep(c(0.5, 0, 0), 8))lo
     C <- diag(rep(1, 8)) %x% 0.5^abs(outer(1:3, 1:3, FUN = "-"))
     X <- cbind(1, scale(matrix(rnorm(p * n), nrow = n)) %*% chol(C))
     px <- logit(b, X)
@@ -2178,9 +2178,9 @@ model3 <- function(n)
 
 
 
-logistic_enet = function(EY, X, lambda, weights, theta, b0, delta){
+Logistic_Enet = function(Y, X, lambda, weights, theta, b0, delta){
   
-  return( logistic_enet(EY, X, lambda, weights, theta, b0, 
+  return( logistic_enet(Y, X, lambda, weights, theta, b0, 
                         delta) )
   
 }
