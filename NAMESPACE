@@ -24,6 +24,6 @@ export(individual.assay.gen,
 	model1,
 	model2,
 	model3,
-	pull.diagnoses
+	pull.diagnoses,
 	logistic_enet,
 	Logistic_Enet)
